@@ -1,21 +1,30 @@
 import sys
 
+#Mapping N, K
 n, k = map(int, sys.stdin.readline().split())
 
+#Constructing the grid for the space
 grid = []
 for _ in range(n):
     row = sys.stdin.readline().strip()
     grid.append([1 if c == '#' else 0 for c in row])
 
+#initialising tracking dict for count
 count_poss = {}
+#expected ship
 empty_zeros = [0 for _ in range(k)]
 
+#tracking set to zero.
 for row in range(n):
     for col in range(n):
         count_poss.update({(row, col):0})
 
+#enumerating the grid.
+#The Idea is for each location i check if it is possible to fit a ship horizontally and vertically, if yes increase the counter else continue.
+#At the take max key and print the index.
 for row_index, row in enumerate(grid):
     
+
     for col_index, col in enumerate(row):
         # print("row",row_index, "column",col_index)
         vertical = grid[row_index:row_index + k]
