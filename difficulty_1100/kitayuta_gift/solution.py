@@ -1,5 +1,6 @@
 s = input()
 
+#simplest program ever
 s_list = []
 for char in s:
     s_list.append(char)
